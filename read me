@@ -1,0 +1,24 @@
+
+26-06-2022 Boudjenah Ibrahim 
+
+* test uart receive and transmit data by using interrupt 
+
+- this project used for test the receive and transmit data on USART2 using interrupt
+- this exxample is tested and it's work proprly
+- this exmpale can receive a maximum of 10 data, when it reached the 
+	max will transmit that data again.
+- this example is tested 
+
+__example 
+___send : 1234567890
+___receive: 1234567890
+ 
+ 
+ 
+ definition: 
+ + defien usart on the cubemx (baudrate: 115200, oversampling 8 ...)
+ + in the main we call MX_USART2_UART_Init(); and this HAL_UART_Receive_IT(&huart2,(uint8_t *)&data,1);
+ + i use callback function when receive data each time the uart receive a bytethis function called
+ + each time i need to call this function HAL_UART_Receive_IT(&huart2,(uint8_t *)&data,1); to restart receiving interrupt
+ + when i have received 10 bytes i will call this function to transmit dagta received  HAL_UART_Transmit_IT(&huart2,(uint8_t *)&recv_data,10);
+ 
